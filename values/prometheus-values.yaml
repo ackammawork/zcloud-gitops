@@ -7,6 +7,6 @@ kubeEtcd:
 prometheus:
   service:
     type: NodePort
-    NodePort:30008
+    nodePort: 30008
 
 
