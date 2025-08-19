@@ -1,0 +1,12 @@
+alertmanager:
+  enabled: false
+
+kubeEtcd:
+  enabled: false
+
+prometheus:
+  service:
+    type: NodePort
+    NodePort:30008
+
+
