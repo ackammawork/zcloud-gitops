@@ -4,7 +4,7 @@ metadata:
   name: prometheus-grafana
 spec:
   destination:
-    namespace: Prometheus
+    namespace: prometheus
     server: https://kubernetes.default.svc
   sources:
     - chart: kube-prometheus-stack
