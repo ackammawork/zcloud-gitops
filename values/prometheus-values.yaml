@@ -15,6 +15,12 @@ grafana:
     nodePort: 30007    
     port: 80          
     targetPort: 3000   
+  additionalDataSources:
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://loki:3100
+        isDefault: false
 
 
 # Trying to fix hook stuck bug
