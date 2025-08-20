@@ -14,4 +14,9 @@ dex:
   # Disable Dex if you want to use static admin/password login for now
   enabled: false
 
+# Trying to fix pending hooks bug
+redisSecretInit:
+  podLabels:
+    sidecar.istio.io/inject: "false"
+
 

@@ -9,4 +9,27 @@ prometheus:
     type: NodePort
     nodePort: 30008
 
+# Trying to fix hook stuck bug
+prometheusOperator:
+  admissionWebhooks:
+    enabled: true
+
+    annotations:
+      argocd.argoproj.io/hook: PreSync
+      argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
+    patch:
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+        argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
+    mutatingWebhookConfiguration:
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+
+    validatingWebhookConfiguration:
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+
+
 
