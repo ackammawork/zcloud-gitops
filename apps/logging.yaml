@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-grafana
+  name: logging
 spec:
   destination:
-    namespace: prometheus
+    namespace: logging
     server: https://kubernetes.default.svc
   sources:
-    - chart: kube-prometheus-stack
-      repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 76.4.0
+    - chart: loki-stack
+      repoURL: https://grafana.github.io/helm-charts
+      targetRevision: 2.10.0
       helm:
-        valueFiles:
-          - $values/values/prometheus-values.yaml
+          valueFiles:
+            - $values/values/logging-values.yaml
     - repoURL: 'https://github.com/ackammawork/zcloud-gitops/'
       targetRevision: HEAD
       ref: values
@@ -23,6 +23,4 @@ spec:
       selfHeal: true
       enabled: true
     syncOptions:
-      - ServerSideApply=true
       - CreateNamespace=true
-
