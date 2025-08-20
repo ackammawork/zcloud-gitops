@@ -12,6 +12,10 @@ grafana:
 
 prometheus:
   enabled: true
-  service:
-    type: NodePort
-    nodePort: 30007
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 0Gi
