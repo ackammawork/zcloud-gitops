@@ -62,7 +62,7 @@ spec:
       template:
         spec:
           containers:
-            - image: ghcr.io/mend/renovate-ce:11.0.0-full 
+            - image: ghcr.io/mend/renovate-ce:11.0.0 
               name: renovate-bot
               env:
                 - name: LOG_LEVEL
