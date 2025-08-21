@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: logging
+spec:
+  destination:
+    namespace: logging
+    server: https://kubernetes.default.svc
+  sources:
+    - chart: loki-stack
+      repoURL: https://grafana.github.io/helm-charts
+      targetRevision: 2.10.2
+      helm:
+          valueFiles:
+            - $values/values/logging-values.yaml
+    - repoURL: 'https://github.com/ackammawork/zcloud-gitops/'
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
+      
