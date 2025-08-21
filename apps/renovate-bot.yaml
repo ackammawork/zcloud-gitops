@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: renovate-bot
+spec:
+  destination:
+    namespace: renovate-bot
+    server: https://kubernetes.default.svc
+  source:
+    path: renovate-bot
+    repoURL: https://github.com/ackammawork/zcloud-gitops/
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
