@@ -68,7 +68,7 @@ spec:
                 - name: LOG_LEVEL
                   value: debug
                 - name: MEND_RNV_REQUEST_LOGGER_ENABLED
-                  value: true
+                  value: "true"
               envFrom:
                 - secretRef:
                     name: renovate-env
